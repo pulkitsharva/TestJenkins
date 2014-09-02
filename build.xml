@@ -42,7 +42,11 @@
         <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
+        <fileset dir="WebContent/WEB-INF/lib">
+			<include name="*.jar"/>
+		</fileset>
     </path>
+ 
     <target name="init">
         <mkdir dir="build/classes"/>
         <copy includeemptydirs="false" todir="build/classes">
