@@ -91,4 +91,5 @@
 			<classes dir="build/classes"/>
 		</war>
 	   </target>
+	   <echo message="war creation done"/>
 </project>
