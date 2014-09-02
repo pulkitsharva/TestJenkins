@@ -10,6 +10,8 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
+    <property name="web-directory" value="WebContent" />
+    <property name="war-file-name" value="ROOT.war" />
     <path id="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath">
         <pathelement location="../../apache-tomcat-7.0.54/lib/annotations-api.jar"/>
         <pathelement location="../../apache-tomcat-7.0.54/lib/catalina-ant.jar"/>
@@ -36,7 +38,7 @@
     <path id="Web App Libraries.libraryclasspath"/>
     <path id="EAR Libraries.libraryclasspath"/>
     <path id="TestJenkins.classpath">
-        <pathelement location="build/classes"/>
+        <pathelement location="`lasses"/>
         <path refid="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath"/>
         <path refid="Web App Libraries.libraryclasspath"/>
         <path refid="EAR Libraries.libraryclasspath"/>
@@ -76,4 +78,17 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target name="compile" depends="init" >
+		<javac destdir="build/classes" debug="true" srcdir="src">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	   </target>
+     <target name="war" depends="compile">
+		<war destfile="D:\${war-file-name}" webxml="WebContent/WEB-INF/web.xml">
+			<fileset dir="${web-directory}">
+				</fileset>
+			<lib dir="WebContent/WEB-INF/lib"/>
+			<classes dir="build/classes"/>
+		</war>
+	   </target>
 </project>
